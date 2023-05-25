@@ -21,5 +21,12 @@ const product = {
 // const stock = product.stock
 
 //rename label to productLabel
-const {label:productLabel, stock} = product
-console.log(productLabel, stock)
+//set default rating =5, only =5 if no rating in product
+// const {label:productLabel, stock, rating = 5} = product
+// console.log(productLabel, stock, rating)
+
+//destructure in input parameter
+const transaction = (type, {label, stock}) =>{
+    console.log(type,label,stock)
+}
+transaction('order', product)
