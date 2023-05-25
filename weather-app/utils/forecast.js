@@ -1,6 +1,6 @@
 const request = require('request')
 const forecast = (latitude, longitude, callback) => {
-    const url = 'http://api.weatherstack.com/current?access_key=f13a610a76880170363a72b263cc580e&query='+latitude+','+longitude +'&units=f'
+    const url = 'http://api.weatherstack.com/current?access_key=f13a610a76880170363a72b263cc580e&query='+latitude+','+longitude +'&units=m'
     request({ url: url, json: true }, (error, response) => {
         if(error){
             callback('Unable to connect to weather services!', undefined)
