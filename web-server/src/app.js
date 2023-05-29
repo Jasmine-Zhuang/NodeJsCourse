@@ -14,6 +14,19 @@ app.get('', (req, res) => {
     })
 })
 
+app.get('/about', (req, res) => {
+    res.render('about',{
+        title: 'About me',
+        name: 'Jasmine Z'
+    })
+})
+
+app.get('/help', (req, res) => {
+    res.render('help',{
+        helpText: 'FAQ'
+    })
+})
+
 app.get('/weather', (req, res)=>{
     res.send([{forecast:'It is sunny', location:'Toronto'}])
 })
