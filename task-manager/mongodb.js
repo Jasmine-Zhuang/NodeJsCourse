@@ -9,6 +9,24 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         return console.log('Unable to connect to database.')
     } 
     const db = client.db(databaseName)
-    db.collection('users').insertOne({
-        name: "Jasmine", age: 21    })
+    db.collection('tasks').insertMany([
+        {
+            description: 'Clean the house',
+            completed: true
+        },
+        {
+            description: 'Pot plants',
+            completed: false
+        },
+        {
+            description: 'Renew inspection',
+            completed: false
+        }
+    ], (error, result) => {
+        if(error){
+            return console.log('Unable to insert tasks')
+        }
+        console.log(result.insertedIds)
+    })
+
 })
