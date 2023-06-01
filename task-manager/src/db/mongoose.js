@@ -58,11 +58,11 @@ const Task = mongoose.model('Task', {
         default: false
     } 
 })
-const cleanHouse = new Task({
-    description:'Eat dinner '
-})
-cleanHouse.save().then(() => {
-    console.log(cleanHouse)
-}).catch((error) => {
-        console.log('error',error)
-    })
+// const cleanHouse = new Task({
+//     description:'Eat dinner '
+// })
+// cleanHouse.save().then(() => {
+//     console.log(cleanHouse)
+// }).catch((error) => {
+//         console.log('error',error)
+//     })
