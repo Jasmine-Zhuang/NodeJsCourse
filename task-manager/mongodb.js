@@ -14,62 +14,17 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         return console.log('Unable to connect to database.')
     } 
     const db = client.db(databaseName)
-    db.collection('tasks').findOne({_id: new ObjectId('6477ae18eddeeb39fbe11325')}, (error, task) => {
-        console.log(task)
+    const updatePromise = db.collection('users').update({
+        _id: new ObjectId('6478ad88242c5400593e62b8')
+    }, {
+        $inc: {
+            age: 1
+        }
     })
-    db.collection('tasks').find({completed: false}).toArray((error, tasks) => {
-        console.log(tasks)
+    updatePromise.then((result)=>{
+        console.log(result)
+    }).catch((error) => {
+        console.log(error)
     })
-
-
-    // db.collection('users').findOne({_id: new ObjectId("6477afbed0eb8051853f83b8")}, (error, user) => {//get the first one if there's duplicate
-    //     if(error){
-    //         return console.log('Unable to fetch')
-    //     }
-    //     console.log(user)
-    // })
-
-    //return a cursor 
-    // db.collection('users').find({age: 21}).toArray((error, users) => {
-    //     console.log(users)
-    // })
-    // db.collection('users').find({age: 21}).count((error, count) => {
-    //     console.log(count)
-    // })
-
-    // db.collection('users').insertOne({
-    //     _id : id ,name: "Mia", age: 21
-    // }, (error, result) => {
-    //     if(error){
-    //         return console.log('Unable to insert user.')
-    //     }
-    //     console.log(result.insertedId)
-    // })
-    // db.collection('users').insertMany([
-    //     {name: 'Jen', age:28}, {name: 'Ben', age: 19}], (error, result) => {
-    //         if(error){
-    //             return console.log('Unable to insert documents')
-    //         }
-    //         console.log(result)
-    //     })
-    // db.collection('tasks').insertMany([
-    //     {
-    //         description: 'Clean the house',
-    //         completed: true
-    //     },
-    //     {
-    //         description: 'Pot plants',
-    //         completed: false
-    //     },
-    //     {
-    //         description: 'Renew inspection',
-    //         completed: false
-    //     }
-    // ], (error, result) => {
-    //     if(error){
-    //         return console.log('Unable to insert tasks')
-    //     }
-    //     console.log(result)
-    // })
 
 })
