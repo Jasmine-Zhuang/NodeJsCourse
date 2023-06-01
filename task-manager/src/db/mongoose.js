@@ -8,7 +8,7 @@ const User = mongoose.model('User', {
     name: {
         type:String,
         required: true,
-        trim: true //remove whitespace left and right
+        trim: true 
     },
     email:{
         type: String,
@@ -29,9 +29,20 @@ const User = mongoose.model('User', {
                 throw new Error('Age must be a positive')
             }
         }
+    },
+    password: {
+        type: String,
+        required:true,
+        minlength: 7,
+        trim: true,
+        validate(value){
+            if(value.toLowerCase().includes('password')){
+                throw new Error('Password can not contain "password"')
+            }
+        }
     }
 })
-const me = new User({name: 'Henry ',email:'ben@gmail.com   ', age: 19})
+const me = new User({name: 'Henry ',email:' henry@gmail.com', password:'asasd123'})
 me.save().then(() => {
     console.log(me)
 }).catch((error)=>{
