@@ -21,7 +21,7 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
             completed: true
         }
     }).then((result)=>{
-        console.log(result)
+        console.log(result.modifiedCount)
     }).catch((error) => {
         console.log(error)
     })
