@@ -14,11 +14,18 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         return console.log('Unable to connect to database.')
     } 
     const db = client.db(databaseName)
-    db.collection('users').findOne({_id: new ObjectId("6477afbed0eb8051853f83b8")}, (error, user) => {//get the first one if there's duplicate
-        if(error){
-            return console.log('Unable to fetch')
-        }
-        console.log(user)
+    // db.collection('users').findOne({_id: new ObjectId("6477afbed0eb8051853f83b8")}, (error, user) => {//get the first one if there's duplicate
+    //     if(error){
+    //         return console.log('Unable to fetch')
+    //     }
+    //     console.log(user)
+    // })
+    //return a cursor 
+    db.collection('users').find({age: 21}).toArray((error, users) => {
+        console.log(users)
+    })
+    db.collection('users').find({age: 21}).count((error, count) => {
+        console.log(count)
     })
     // db.collection('users').insertOne({
     //     _id : id ,name: "Mia", age: 21
