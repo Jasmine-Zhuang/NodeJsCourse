@@ -74,7 +74,7 @@ app.get('/tasks/:id', async (req, res) => {
         res.send(task)
     }
     catch (e) {
-        res.send(task)
+        res.status(500).send(task)
     }  
 })
 
