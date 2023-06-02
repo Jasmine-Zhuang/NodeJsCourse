@@ -50,7 +50,7 @@ app.post('/tasks', async (req, res) => {
         res.status(201).send(task)
     }
     catch (e) {
-        res.status(400).send(error)
+        res.status(400).send(e)
     }
 })
 
@@ -74,7 +74,7 @@ app.get('/tasks/:id', async (req, res) => {
         res.send(task)
     }
     catch (e) {
-        res.status(500).send(task)
+        res.status(500).send()
     }  
 })
 
