@@ -14,8 +14,8 @@ const deleteTaskAndCount = async (id) => {
     const count = await Task.countDocuments({completed:false})
     return count
 }
-deleteTaskAndCount('647a2e4d44dee3dbdb9162bf').then((result) => {
-    console.log(result)
+deleteTaskAndCount('647a2e4d44dee3dbdb9162bf').then((count) => {
+    console.log(count)
 }).catch((e)=>{
     console.log(e)
 })
