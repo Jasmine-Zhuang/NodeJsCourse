@@ -65,6 +65,12 @@ userSchema.methods.toJSON = function() {
     return userObject
 }
 
+userSchema.virtual('tasks', {
+    ref: 'Task',
+    localField: '_id',
+    foreignField: 'owner'
+})
+
 //model method (User)
 userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({ email })
