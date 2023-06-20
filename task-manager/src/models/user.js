@@ -48,7 +48,7 @@ const userSchema = new mongoose.Schema({
         }
     }]
 })
-//instance method
+//instance method(user)
 userSchema.methods.generateAuthToken = async function(){
     const user = this
     const token = jwt.sign({ _id: user._id.toString() }, 'thisismyfirstnodejscourse')
@@ -56,7 +56,15 @@ userSchema.methods.generateAuthToken = async function(){
     await user.save()
     return token
 }
-//model method
+
+userSchema.methods.getPublicProfile = function() {
+    const user = this
+    const userObject = user.toObject()
+    delete userObject.password
+    delete userObject.tokens
+    return userObject
+}
+//model method (User)
 userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({ email })
     if(!user){
