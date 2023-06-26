@@ -2,7 +2,7 @@
 
 ## Description
 
-A simple weather website using Node.js, Express, and Request for submitting an API request to Geocode and Weatherstack to retrieve location information and the current weather, respectively.
+A simple weather website using Node.js, Express, hbs, and Request for submitting an API request to Geocode and Weatherstack to retrieve location information and the current weather, respectively.
 
 ### Installing
 
