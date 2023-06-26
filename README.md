@@ -11,9 +11,9 @@ This repository contains the code and projects I have worked on during my Node.j
 
 In this repository, you will find the following projects:
 
-1. Project 1: [Project Name](link-to-project-repo) - Brief description of the project.
-2. Project 2: [Project Name](link-to-project-repo) - Brief description of the project.
-3. Project 3: [Project Name](link-to-project-repo) - Brief description of the project.
+1. Project 1: [Notes App](https://github.com/Jasmine-Zhuang/NodeJsCourse/tree/main/notes-app)
+2. Project 2: [Weather App](https://github.com/Jasmine-Zhuang/NodeJsCourse/tree/main/weather-app)
+3. Project 3: [Task App](https://github.com/Jasmine-Zhuang/NodeJsCourse/tree/main/task-manager)
    ...
 
 Feel free to explore each project's directory to access the code, documentation, and any additional resources related to the project.
