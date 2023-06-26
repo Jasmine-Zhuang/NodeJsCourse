@@ -1,7 +1,26 @@
-# NodeJsCourse
-This repo contains code for node js course.
-## Get started on task manager
-- clone the repo
-- cd in task-manager
-- npm i
-- npm start
+# My Node.js Course Projects
+
+This repository contains the code and projects I have worked on during my Node.js course.
+
+## Table of Contents
+
+- [Projects](#projects)
+- [Getting Started](#getting-started)
+
+## Projects
+
+In this repository, you will find the following projects:
+
+1. Project 1: [Project Name](link-to-project-repo) - Brief description of the project.
+2. Project 2: [Project Name](link-to-project-repo) - Brief description of the project.
+3. Project 3: [Project Name](link-to-project-repo) - Brief description of the project.
+   ...
+
+Feel free to explore each project's directory to access the code, documentation, and any additional resources related to the project.
+
+## Getting Started
+
+To get started with any of the projects, follow the instructions provided in each project's directory. You will find information on dependencies, installation steps, and how to run the project.
+
+back and suggestions are always welcome! Feel free to open an issue if you find any bugs or have any suggestions for improvement.
+
