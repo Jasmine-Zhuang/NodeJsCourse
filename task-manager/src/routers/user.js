@@ -69,14 +69,15 @@ router.patch('/users/me', auth, async (req, res) => {
     }
 })
 
+// Route handler to delete the authenticated user
 router.delete('/users/me', auth, async (req, res) => {
-    try {
-        await req.user.deleteOne()
-        res.send(req.user)
-    } catch (e) {
-        console.error(e.message)
-        res.status(500).send(e)
-    }
-})
+  try {
+    await req.user.deleteOne() // Trigger the middleware to delete associated tasks
+    res.send(req.user)
+  } catch (e) {
+    console.error(e.message)
+    res.status(500).send(e)
+  }
+});
 
 module.exports = router
