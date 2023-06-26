@@ -22,5 +22,3 @@ Feel free to explore each project's directory to access the code, documentation,
 
 To get started with any of the projects, follow the instructions provided in each project's directory. You will find information on dependencies, installation steps, and how to run the project.
 
-back and suggestions are always welcome! Feel free to open an issue if you find any bugs or have any suggestions for improvement.
-
