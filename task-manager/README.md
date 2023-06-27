@@ -21,4 +21,11 @@ Open the project folder at the root in your terminal and run `npm install` to do
 
 -  use `studio 3T` to connect to database and view database
 
+## Built With
 
+- Node.js 
+- MongoDB 
+- mongoose
+- Express
+- jwt
+- bcrypt
