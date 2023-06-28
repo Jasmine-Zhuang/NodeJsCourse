@@ -6,12 +6,28 @@ const taskRouter = require('./routers/task')
 const app = express()
 const port = process.env.PORT || 3000
 
-// app.use((req, res, next) => {
-//     res.status(503).send('Site is currently down. Check back soon!')
-// })
+const multer = require('multer')
+const upload = multer({ 
+    dest: 'images',
+    limits: {
+        fileSize: 1000000 // number in byte, 1MB
+    },
+    fileFilter(req, file, cb) {
+        if (!file.originalname.match(/\.(doc|docx)$/)){ //!file.originalname.endsWith('.pdf') => please upload a pdf
+            return cb(new Error("Please upload a Word document"))
+        }
+        cb(undefined, true)
+
+        // cb(new Error('File must be a PDF'))
+        // cb(undefined, true)
+        // cb(undefined, false)
+    }
+})
+app.post('/upload', upload.single('upload'), (req, res) => {
+    res.send()
+})
 
 app.use(express.json())
-
 app.use(userRouter)
 app.use(taskRouter)
 
