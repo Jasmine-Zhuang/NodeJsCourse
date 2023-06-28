@@ -83,7 +83,6 @@ router.delete('/users/me', auth, async (req, res) => {
 
 // avatar upload
 const upload = multer({
-  dest: "avatars",
   limits: {
     fileSize: 1000000, // number in byte, 1MB
   },
@@ -95,7 +94,10 @@ const upload = multer({
   }
 })
 
-router.post('/users/me/avatar', upload.single('avatar'), (req, res) => {
+router.post('/users/me/avatar', auth, upload.single('avatar'), async (req, res) => {
+    // with dest option removed from the const upload, the binary file can be accessed here
+    req.user.avatar = req.file.buffer
+    await req.user.save()
     res.send()
 }, (error, req, res, next) => {
     res.status(400).send({ error: error.message })
