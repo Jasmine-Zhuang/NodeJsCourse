@@ -209,7 +209,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/tasks?completed=false",
+					"raw": "{{url}}/tasks",
 					"host": [
 						"{{url}}"
 					],
@@ -219,7 +219,23 @@
 					"query": [
 						{
 							"key": "completed",
-							"value": "false"
+							"value": "false",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "3",
+							"disabled": true
+						},
+						{
+							"key": "skip",
+							"value": "3",
+							"disabled": true
+						},
+						{
+							"key": "sortBy",
+							"value": "createdAt:asc",
+							"disabled": true
 						}
 					]
 				}
@@ -338,6 +354,22 @@
 						"64920bfdea001cd9597b07b9"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload avatar",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Delete avatar",
+			"request": {
+				"method": "GET",
+				"header": []
 			},
 			"response": []
 		}
