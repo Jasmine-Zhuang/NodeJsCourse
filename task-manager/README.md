@@ -5,6 +5,7 @@
 - Install Node
 - Install MongoDB
 - Install Studio 3T
+- Install Postman
 
 ### Installing
 
