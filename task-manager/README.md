@@ -23,9 +23,10 @@ Open the project folder at the root in your terminal and run `npm install` to do
 
 ## Built With
 
-- Node.js 
-- MongoDB 
-- mongoose
-- Express
-- jwt
-- bcrypt
+- Node.js (JavaScript runtime)
+- MongoDB (database)
+- mongoose (MongoDB object modeling tool)
+- Express (Node.js web application framework)
+- jwt (web tokens)
+- bcrypt (hash passwords)
+- Sharp (compress large image)
