@@ -54,6 +54,7 @@ const userSchema = new mongoose.Schema({
 }, {
     timestamps: true
 })
+
 // instance method(user)
 userSchema.methods.generateAuthToken = async function(){
     const user = this
@@ -63,14 +64,18 @@ userSchema.methods.generateAuthToken = async function(){
     return token
 }
 
+// Not display password, tokens and avatar when send back user object
 userSchema.methods.toJSON = function() {
     const user = this
     const userObject = user.toObject()
     delete userObject.password
     delete userObject.tokens
+    delete userObject.avatar
+
     return userObject
 }
 
+// Let user._id references Tasks.owner
 userSchema.virtual('tasks', {
     ref: 'Task',
     localField: '_id',
