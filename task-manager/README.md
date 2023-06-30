@@ -17,7 +17,8 @@ Open the project folder at the root in your terminal and run `npm install` to do
 - `npm run dev` to start server.
 -  `/Users/jasminezhuang/mongodb/bin/mongod --dbpath=/Users/jasminezhuang/mongodb-data` to start db in local
 -  use `postman` to send requests (sample requests in [Task App.postman_collection.json](https://github.com/Jasmine-Zhuang/NodeJsCourse/blob/main/task-manager/Task%20App.postman_collection.json))
-<img width="193" alt="Screen Shot 2023-06-27 at 2 39 22 PM" src="https://github.com/Jasmine-Zhuang/NodeJsCourse/assets/75867805/d676961d-201a-4ed8-97ce-9bebf2dba8d3">
+
+<img width="416" alt="Screen Shot 2023-06-30 at 10 47 00 AM" src="https://github.com/Jasmine-Zhuang/NodeJsCourse/assets/75867805/072fd8e8-844f-4aef-a3ae-9f49d8b072e9">
 
 -  use `studio 3T` to connect to database and view database
 
