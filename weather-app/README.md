@@ -10,7 +10,7 @@ After downloading or cloning the repo perform the following steps:
 
 Open the project folder at the root in your terminal and run `npm install` to download the dependencies needed for this project.
 
-Next, type `node ./web-server/src/app.js` to run the Express server which defaults to localhost:3000.
+Next, type `node ../web-server/src/app.js` to run the Express server which defaults to localhost:3000.
 
 ## Website 
 
