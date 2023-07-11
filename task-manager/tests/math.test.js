@@ -1,9 +1,9 @@
 const { calculateTip } = require('../src/math')
 
-
 test('Should calculate total with tip', () => {
-    const total = calculateTip(10, .3)
-    if (total !== 13){
-        throw new Error('Total tip should be 13. Got '+ total)
-    }
+    expect(calculateTip(10, .3)).toBe(13)
 }) 
+
+test("Should calculate total with default tip", () => {
+  expect(calculateTip(10)).toBe(11.5);
+}); 
