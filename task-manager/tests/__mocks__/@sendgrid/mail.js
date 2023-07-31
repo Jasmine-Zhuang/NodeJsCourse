@@ -1,0 +1,8 @@
+model.exports = {
+    sendAipKey() {
+
+    },
+    send() {
+        
+    }
+}
