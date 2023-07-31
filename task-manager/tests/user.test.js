@@ -54,8 +54,8 @@ test("Should login existing user", async () => {
       password: user1.password,
     })
     .expect(200);
-    const user = User.findById(user1Id);
-    expect(res.body.token).toBe(user1.tokens[0].token)
+  const user = User.findById(user1Id);
+  expect(res.body.token).toBe(user1.tokens[0].token);
 });
 
 test("Should not login non-existing user", async () => {
@@ -86,10 +86,41 @@ test("Should delete account for user", async () => {
     .set("Authorization", `Bearer ${user1.tokens[0].token}`)
     .send()
     .expect(200);
-    const user = await User.findById(user1Id)
-    expect(user).toBeNull()
+  const user = await User.findById(user1Id);
+  expect(user).toBeNull();
 });
 
 test("Should not delete account for unauthenticated user", async () => {
   await request(app).delete("/users/me").send().expect(401);
+});
+
+test("Should upload avatar image", async () => {
+  await request(app)
+    .post("/users/me/avatar")
+    .set("Authorization", `Bearer ${user1.tokens[0].token}`)
+    .attach("avatar", "tests/fixtures/cat.jpeg")
+    .expect(200);
+  const user = await User.findById(user1Id);
+  expect(user.avatar).toEqual(expect.any(Buffer))
+});
+
+test('Should update valid user fields', async () => {
+  await request(app)
+    .patch("/users/me")
+    .set("Authorization", `Bearer ${user1.tokens[0].token}`)
+    .send({
+      name: 'Mia'
+    }).expect(200);
+  const user = await User.findById(user1Id);
+  expect(user.name).toBe('Mia');
+});
+
+test("Should not update invalid user fields", async () => {
+  await request(app)
+    .patch("/users/me")
+    .set("Authorization", `Bearer ${user1.tokens[0].token}`)
+    .send({
+      location: 'Anywhere'
+    })
+    .expect(400);
 });
