@@ -12,19 +12,27 @@ const publicDirectoryPath = path.join(__dirname, "../public");
 
 app.use(express.static(publicDirectoryPath));
 
-io.on("connection", (socket) => { // socket === client
+io.on("connection", (socket) => {
+  // socket === client
   console.log("New WebSocket connection");
 
-  socket.emit('message', 'Welcome!'); // send to single client
-  socket.broadcast.emit('message', 'A new user has joined'); // send to all clients except this socket
-  
-  socket.on('sendMessage', (message) => {
-    io.emit('message', message); // send to all clients
+  socket.emit("message", "Welcome!"); // send to single client
+  socket.broadcast.emit("message", "A new user has joined"); // send to all clients except this socket
+
+  socket.on("sendMessage", (message) => {
+    io.emit("message", message); // send to all clients
   });
 
-  socket.on('disconnect',() => {
-    io.emit('message', 'A user has left'); // send to all clients 
-  })
+  socket.on("sendLocation", (location) => {
+    io.emit(
+      "message",
+      `https://google.com/maps?q=${location.lat},${location.long}`
+    );
+  });
+
+  socket.on("disconnect", () => {
+    io.emit("message", "A user has left"); // send to all clients
+  });
 });
 
 server.listen(port, () => {
