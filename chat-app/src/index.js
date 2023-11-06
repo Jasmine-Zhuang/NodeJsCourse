@@ -40,7 +40,7 @@ io.on("connection", (socket) => {
     if (filter.isProfane(message)) {
       return callback("Profanity is not allowed.");
     }
-    io.to('Room1').emit("message", generateMessage(message)); 
+    io.to('Room1').emit("message", generateMessage(message)); // all messages will be sent to this room
     callback();
   });
 
