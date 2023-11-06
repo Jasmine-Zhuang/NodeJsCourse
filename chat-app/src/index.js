@@ -21,16 +21,26 @@ io.on("connection", (socket) => {
   // socket === client
   console.log("New WebSocket connection.");
 
-  // send to single client
-  socket.emit("message", generateMessage("Welcome!"));
-  socket.broadcast.emit("message", generateMessage("A new user has joined.")); // send to all clients except this socket
+  socket.on("join", ({ username, room }) => {
+    socket.join(room);
+    // socket.emit (send to single client)
+    // socket.broadcast.emit (send to all clients except this socket)
+    // io.to.emit (send event to all in this room)
+    // socket.broadcast.to.emit (send to all except for this client in this room)
+    // io.emit (to all clients)
+
+    socket.emit("message", generateMessage("Welcome!"));
+    socket.broadcast
+      .to(room)
+      .emit("message", generateMessage(`${username} has joined.`));
+  });
 
   socket.on("sendMessage", (message, callback) => {
     const filter = new Filter();
     if (filter.isProfane(message)) {
       return callback("Profanity is not allowed.");
     }
-    io.emit("message", generateMessage(message)); // send to all clients
+    io.to('Room1').emit("message", generateMessage(message)); 
     callback();
   });
 
