@@ -77,4 +77,9 @@ $sendLocationButton.addEventListener("click", () => {
   });
 });
 
-socket.emit('join', {username, room})
+socket.emit('join', {username, room}, (error) => {
+  if (error) { // if user fails to join the room, alert the error and redirect them to the join page
+    alert(error);
+    location.href = '/'
+  }
+})
