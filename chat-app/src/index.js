@@ -30,7 +30,7 @@ io.on("connection", (socket) => {
   socket.on("join", ({ username, room }, callback) => {
     const { error, user } = addUser({ id: socket.id, username, room });
     if (error) {
-      return callback(error)
+      return callback(error);
     }
 
     socket.join(user.room);
@@ -40,27 +40,32 @@ io.on("connection", (socket) => {
     // socket.broadcast.to.emit (send to all except for this client in this room)
     // io.emit (to all clients)
 
-    socket.emit("message", generateMessage("Welcome!"));
+    socket.emit("message", generateMessage('Admin', "Welcome!"));
     socket.broadcast
       .to(user.room)
-      .emit("message", generateMessage(`${user.username} has joined!`));
+      .emit("message", generateMessage('Admin', `${user.username} has joined!`));
 
-    callback()
+    callback();
   });
 
   socket.on("sendMessage", (message, callback) => {
+    const user = getUser(socket.id);
     const filter = new Filter();
+
     if (filter.isProfane(message)) {
       return callback("Profanity is not allowed.");
     }
-    io.to("Room1").emit("message", generateMessage(message)); // all messages will be sent to this room
+
+    io.to(user.room).emit("message", generateMessage(user.username, message)); // all messages will be sent to this room
     callback();
   });
 
   socket.on("sendLocation", (location, callback) => {
-    io.emit(
+    const user = getUser(socket.id);
+    io.to(user.room).emit(
       "locationMessage",
       generateLocationMessage(
+        user.username,
         `https://google.com/maps?q=${location.lat},${location.long}`
       )
     );
@@ -71,7 +76,10 @@ io.on("connection", (socket) => {
     const user = removeUser(socket.id);
 
     if (user) {
-      io.to(user.room).emit("message", generateMessage(`${user.username} has left!`)); 
+      io.to(user.room).emit(
+        "message",
+        generateMessage('Admin', `${user.username} has left!`)
+      );
     }
   });
 });
